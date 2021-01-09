@@ -19,4 +19,7 @@ Route::get('/', function () {
 
 Route::get('/articles',"ArticleController@index")->name('article.index');
 
+Route::get('/articles/add',"ArticleController@add")->name('add-article-form');
+Route::post('/articles/add',"ArticleController@create");
+
 Route::get('/articles/detail/{id}',"ArticleController@detail");

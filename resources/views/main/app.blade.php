@@ -30,7 +30,12 @@
                         SIMPLE BLOG
                     </span>
                 </a>
+                <a href="{{ route('add-article-form') }}" class="nav-link text-success">
+                    +Add Article
+                </a>  
             </div>
+
+ 
         </nav>
         <main class="py-4">
             @yield('content')
