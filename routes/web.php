@@ -23,3 +23,8 @@ Route::get('/articles/add',"ArticleController@add")->name('add-article-form');
 Route::post('/articles/add',"ArticleController@create");
 
 Route::get('/articles/detail/{id}',"ArticleController@detail");
+
+Route::get('/articles/edit/{id}',"ArticleController@edit");
+Route::put('/articles/edit/{id}',"ArticleController@update");
+
+Route::get('/articles/delete/{id}',"ArticleController@delete");

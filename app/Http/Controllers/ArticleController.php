@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\storeArticleRequest;
 
 class ArticleController extends Controller
 {
@@ -21,7 +22,7 @@ class ArticleController extends Controller
         return view ('articles.add',compact('categories'));
     }
 
-    public function create()
+    public function create(storeArticleRequest $id)
     {
         $validator = validator(request()->all(),[
             'title' => 'required',
@@ -44,7 +45,36 @@ class ArticleController extends Controller
 
     public function detail($id)
     {
-        $article = Article::findOrFail($id);
+        $article = Article::find($id);
         return view ("articles.detail",compact('article'));
+    }
+
+    public function edit($id)
+    {
+        $article = Article::find($id);
+        $categories = Category::all();
+        return view ("articles.edit",[
+            'article' => $article,
+            'category' => $categories
+        ]);
+    }
+
+    public function update($id)
+    {
+        $article = Article::find($id);
+        $article->title = request()->title;
+        $article->body = request()->body;
+        $article->category_id = request()->category_id;
+        $article->save();
+        return redirect ('/articles');
+    }
+
+    public function delete($id)
+    {
+        $article = Article::find($id);
+        $article->delete();
+
+        return redirect('/articles',)->with('info','Article Deleted');
+
     }
 }

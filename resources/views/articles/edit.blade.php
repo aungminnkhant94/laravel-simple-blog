@@ -18,24 +18,25 @@
     @endif
     <form method="POST">
             @csrf
+            @method('PUT')
             <div class="form-group mb-3">
                 <label for="title">Title</label>
                 <input type="text"name="title"
                        class="form-control" 
-                       value="{{ old('title') }}" >
+                       value="{{ $article->title }}" >
             </div>
 
             <div class="form-group mb-3">
                 <label for="body">Body</label>
-                <textarea name="body" id="body" class="form-control">{{ old('body') }}</textarea>
+                <textarea name="body" id="body" class="form-control">{{ $article->body }}</textarea>
             </div>
 
             <div class="form-group mb-3">
                 <label for="category">Category</label>
                 <select name="category_id" id="category"class="form-control">
-                    @foreach($categories as $category)
-                        <option value="{{ $category['id'] }}">
-                            {{ $category['name'] }}
+                    @foreach($category as $categories)
+                        <option value="{{ $categories['id'] }}">
+                            {{ $categories['name'] }}
                         </option>
                     @endforeach
                 </select>

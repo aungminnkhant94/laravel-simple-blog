@@ -1,6 +1,12 @@
 @extends('main.app')
 
 @section("content")
+    @if(session('info'))
+        <div class="alert alert-danger">
+            {{ session('info') }}
+        </div>
+    @endif
+
     <div class="container">
         @foreach($articles as $article)
             <div class="card border-primary mb-2">
