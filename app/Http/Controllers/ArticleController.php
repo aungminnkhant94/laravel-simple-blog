@@ -51,22 +51,25 @@ class ArticleController extends Controller
 
     public function edit($id)
     {
-        $article = Article::find($id);
-        $categories = Category::all();
+        $article = Article::findOrFail($id);
+        $category = Category::all();
         return view ("articles.edit",[
             'article' => $article,
-            'category' => $categories
+            'categories' => $category
         ]);
     }
 
-    public function update($id)
+    public function update(Request $request,$id)
     {
-        $article = Article::find($id);
-        $article->title = request()->title;
-        $article->body = request()->body;
-        $article->category_id = request()->category_id;
-        $article->save();
-        return redirect ('/articles');
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        Article::whereId($id) -> update($validatedData);
+
+        return redirect('/articles');
     }
 
     public function delete($id)

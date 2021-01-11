@@ -28,20 +28,20 @@
 
             <div class="form-group mb-3">
                 <label for="body">Body</label>
-                <textarea name="body" id="body" class="form-control">{{ $article->body }}</textarea>
+                <textarea name="body" id="body" class="form-control">{{ $article ->body }}</textarea>
             </div>
 
             <div class="form-group mb-3">
                 <label for="category">Category</label>
                 <select name="category_id" id="category"class="form-control">
-                    @foreach($category as $categories)
+                    @foreach($categories as $categories)
                         <option value="{{ $categories['id'] }}">
                             {{ $categories['name'] }}
                         </option>
                     @endforeach
                 </select>
             </div>
-            <input type="submit"value="Add Article"class="btn btn-primary">
+            <input type="submit"value="Update Article"class="btn btn-primary">
     </form>
 
 </div>
