@@ -36,7 +36,7 @@ class storeArticleRequest extends FormRequest
         return[
             'title.required' => 'A title is mainly required',
             'body.required' => 'A body need to be required',
-            'category_id.required' => 'Choose one category'
+            'category.required' => 'Choose one category'
         ];
     }
 }

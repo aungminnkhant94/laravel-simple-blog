@@ -40,6 +40,10 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <a href="logout"class="btn btn-warning">Logout</a>
+        <footer class="text-center py-4 text-muted">
+        &copy; Copyright 2020
+        </footer>
     </div>
 </body>
 </html>

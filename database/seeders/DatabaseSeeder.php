@@ -35,5 +35,11 @@ class DatabaseSeeder extends Seeder
         \App\Models\Category::factory()->create([
             "name" => "Science",
         ]);
+
+        \App\Models\Category::factory()->create([
+            "name" => "Funny" ,
+        ]);
+
+
     }
 }

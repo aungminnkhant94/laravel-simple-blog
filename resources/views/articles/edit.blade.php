@@ -35,7 +35,7 @@
                 <label for="category">Category</label>
                 <select name="category_id" id="category"class="form-control">
                     @foreach($categories as $categories)
-                        <option value="{{ $categories['id'] }}">
+                        <option value="{{ $categories['id'] }}"{{ $categories['id'] == $article['category_id'] ? 'selected' : '' }}>
                             {{ $categories['name'] }}
                         </option>
                     @endforeach

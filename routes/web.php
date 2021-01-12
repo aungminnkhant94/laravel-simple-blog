@@ -28,3 +28,11 @@ Route::get('/articles/edit/{id}',"ArticleController@edit");
 Route::put('/articles/edit/{id}',"ArticleController@update");
 
 Route::get('/articles/delete/{id}',"ArticleController@delete");
+
+//Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//    return view('dashboard');
+//})->name('dashboard');
+
+Route::get('/logout',"AuthController@logout");
+
+Route::middleware(['auth:sanctum','verified'])->get('/articles',"ArticleController@index")->name('article.index');
