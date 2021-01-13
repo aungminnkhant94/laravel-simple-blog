@@ -53,6 +53,10 @@ class ArticleController extends Controller
     {
         $article = Article::findOrFail($id);
         $category = Category::all();
+
+        if($article->user_id != auth()->id()){
+            abort(403);
+        }
         return view ("articles.edit",[
             'article' => $article,
             'categories' => $category

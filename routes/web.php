@@ -29,10 +29,10 @@ Route::put('/articles/edit/{id}',"ArticleController@update");
 
 Route::get('/articles/delete/{id}',"ArticleController@delete");
 
-//Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//    return view('dashboard');
-//})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
-Route::get('/logout',"AuthController@logout");
+Route::get('/logout',"AuthController@logout")->name('logout');
 
 Route::middleware(['auth:sanctum','verified'])->get('/articles',"ArticleController@index")->name('article.index');

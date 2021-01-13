@@ -33,6 +33,24 @@
                 <a href="{{ route('add-article-form') }}" class="nav-link text-success">
                     +Add Article
                 </a>  
+
+                <li class="nav dropdown">
+                    <a  class="dropdown-toggle" role="button" data-toggle="dropdown">
+                        {{ Auth::user()->name }}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
             </div>
 
  
@@ -40,7 +58,7 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <a href="logout"class="btn btn-warning">Logout</a>
+        <a style="float:right;" href="logout"class="btn btn-warning">Logout</a>
         <footer class="text-center py-4 text-muted">
         &copy; Copyright 2020
         </footer>
