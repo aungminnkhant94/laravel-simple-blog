@@ -46,6 +46,7 @@ class ArticleController extends Controller
     public function detail($id)
     {
         $article = Article::find($id);
+        //$this->authorize('view',$article);
         return view ("articles.detail",compact('article'));
     }
 
@@ -54,9 +55,10 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
         $category = Category::all();
 
-        if($article->user_id != auth()->id()){
-            abort(403);
-        }
+        //if($article->user_id != auth()->id()){
+        //    abort(403);
+        //}
+        $this->authorize('view',$article);
         return view ("articles.edit",[
             'article' => $article,
             'categories' => $category
