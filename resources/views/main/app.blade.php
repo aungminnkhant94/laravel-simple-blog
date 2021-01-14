@@ -18,7 +18,11 @@
     <!-- Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-
+    <style>
+        body{
+            overflow-x:hidden;
+        }
+    </style>
 </head>
 <body>
     <div id="id">
@@ -34,8 +38,8 @@
                     +Add Article
                 </a>  
 
-                <li class="nav dropdown">
-                    <a  class="dropdown-toggle" role="button" data-toggle="dropdown">
+                <li class="nav nav-tabs dropdown">
+                    <a  class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">
                         {{ Auth::user()->name }}
                     </a>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use auth;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -38,6 +39,7 @@ class ArticleController extends Controller
         $article->title = request()->title;
         $article->body = request()->body;
         $article->category_id = request()->category_id;
+        $article->user_id = auth()->user()->id;
         $article->save();
 
         return redirect('/articles');
@@ -58,6 +60,7 @@ class ArticleController extends Controller
         //if($article->user_id != auth()->id()){
         //    abort(403);
         //}
+
         $this->authorize('view',$article);
         return view ("articles.edit",[
             'article' => $article,
@@ -81,8 +84,9 @@ class ArticleController extends Controller
     public function delete($id)
     {
         $article = Article::find($id);
-        $article->delete();
 
+        $this->authorize('delete',$article);
+        $article->delete();
         return redirect('/articles',)->with('info','Article Deleted');
 
     }

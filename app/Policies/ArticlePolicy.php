@@ -2,8 +2,9 @@
 
 namespace App\Policies;
 
-use App\Models\Article;
 use App\Models\User;
+use App\Models\Article;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ArticlePolicy
@@ -67,6 +68,7 @@ class ArticlePolicy
     public function delete(User $user, Article $article)
     {
         //
+        return $user->id === $article->user_id;
     }
 
     /**
