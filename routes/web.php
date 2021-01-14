@@ -1,5 +1,7 @@
 <?php
 
+use App\Example;
+use App\Container;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,3 +38,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/logout',"AuthController@logout")->name('logout');
 
 Route::middleware(['auth:sanctum','verified'])->get('/articles',"ArticleController@index")->name('article.index');
+
+Route::get('/container',function(){
+    $container = new Container();
+
+    $container->bind('example',function(){
+        return new Example();
+    });
+
+    $example = $container->resolve('example');
+
+    dd($example->eg());
+});
