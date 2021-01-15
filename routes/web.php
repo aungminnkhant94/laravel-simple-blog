@@ -39,14 +39,27 @@ Route::get('/logout',"AuthController@logout")->name('logout');
 
 Route::middleware(['auth:sanctum','verified'])->get('/articles',"ArticleController@index")->name('article.index');
 
-Route::get('/container',function(){
-    $container = new Container();
+//Route::get('/container',function(){
+//    $container = new Container();
+//
+//    $container->bind('example',function(){
+//       return new Example();
+//    });
+//
+//    $example = $container->resolve('example');
+//
+//     dd($example->eg());
+//});
 
-    $container->bind('example',function(){
-        return new Example();
+Route::get('/container',function(){
+    app()->bind('example',function(){
+        return new Example('AUNG');
     });
 
-    $example = $container->resolve('example');
+    $example = resolve('example'); 
+    dd($example);
+});
 
-    dd($example->eg());
+Route::get('/counter',function(){
+    return view('counter');
 });
